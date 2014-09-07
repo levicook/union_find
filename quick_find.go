@@ -1,15 +1,10 @@
 package union_find
 
 func NewQuickFind(size int) UnionFind {
-	return newQuickFind(size)
+	return newQuickFind(newIds(size))
 }
 
-func newQuickFind(size int) *quickFind {
-	ids := make([]int, size)
-	for i := range ids {
-		ids[i] = i
-	}
-
+func newQuickFind(ids []int) *quickFind {
 	qf := new(quickFind)
 	qf.ids = ids
 	return qf

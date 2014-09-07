@@ -22,31 +22,31 @@ func Benchmark_QuickFind_Union_All_1000(b *testing.B) {
 	bench_Union_All(b, NewQuickFind(1000))
 }
 
-func Benchmark_QuickFind_Union_All_10000(b *testing.B) {
-	bench_Union_All(b, NewQuickFind(10000))
-}
+//func Benchmark_QuickFind_Union_All_10000(b *testing.B) {
+//	bench_Union_All(b, NewQuickFind(10000))
+//}
 
 func Test_QuickFind(t *testing.T) {
-	uf := NewQuickFind(10)
+	qf := NewQuickFind(10)
 
-	for i := 0; i < uf.Len(); i++ {
-		for j := 0; j < uf.Len(); j++ {
+	for i := 0; i < qf.Len(); i++ {
+		for j := 0; j < qf.Len(); j++ {
 
 			if i == j {
-				require.True(t, uf.Find(i, j))
+				require.True(t, qf.Find(i, j))
 			} else {
-				require.False(t, uf.Find(i, j))
+				require.False(t, qf.Find(i, j))
 			}
 		}
 	}
 
-	uf.Union(4, 3)
-	require.True(t, uf.Find(4, 3))
-	require.True(t, uf.Find(3, 4))
+	qf.Union(4, 3)
+	require.True(t, qf.Find(4, 3))
+	require.True(t, qf.Find(3, 4))
 
-	uf.Union(3, 8)
-	require.True(t, uf.Find(3, 8))
-	require.True(t, uf.Find(8, 3))
-	require.True(t, uf.Find(4, 8))
-	require.True(t, uf.Find(8, 4))
+	qf.Union(3, 8)
+	require.True(t, qf.Find(3, 8))
+	require.True(t, qf.Find(8, 3))
+	require.True(t, qf.Find(4, 8))
+	require.True(t, qf.Find(8, 4))
 }
