@@ -6,13 +6,31 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func Benchmark_QuickFind_Find_Identity_10000(b *testing.B) {
+	bench_Find_Identity(b, NewQuickFind(10000))
+}
+
+func Benchmark_QuickFind_Find_Identity_100000(b *testing.B) {
+	bench_Find_Identity(b, NewQuickFind(100000))
+}
+
+func Benchmark_QuickFind_Find_Identity_1000000(b *testing.B) {
+	bench_Find_Identity(b, NewQuickFind(1000000))
+}
+
+func Benchmark_QuickFind_Union_All_1000(b *testing.B) {
+	bench_Union_All(b, NewQuickFind(1000))
+}
+
+func Benchmark_QuickFind_Union_All_10000(b *testing.B) {
+	bench_Union_All(b, NewQuickFind(10000))
+}
+
 func Test_QuickFind(t *testing.T) {
-	size := 10
+	uf := NewQuickFind(10)
 
-	uf := NewQuickFind(size)
-
-	for i := 0; i < size; i++ {
-		for j := 0; j < size; j++ {
+	for i := 0; i < uf.Len(); i++ {
+		for j := 0; j < uf.Len(); j++ {
 
 			if i == j {
 				require.True(t, uf.Find(i, j))

@@ -17,6 +17,8 @@ func newQuickFind(size int) *quickFind {
 
 type quickFind struct{ ids []int }
 
+func (qf *quickFind) Len() int { return len(qf.ids) }
+
 func (qf *quickFind) Find(p, q int) bool {
 	return qf.ids[p] == qf.ids[q]
 }
